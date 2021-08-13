@@ -1,0 +1,23 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.checkboxField({
+    label: 'Use own CDN for serving Article assets'|t('app'),
+    instructions: 'Enable this if you have your own version of the Article Editor.'|t('app'),
+    id: 'useCDN',
+    name: 'useCDN',
+    checked: settings['useCDN'],
+    toggle: 'asset-url'
+}) }}
+
+<div id="asset-url" {% if settings['useCDN'] == '0' %} class="hidden" {% endif %}>
+    {{ forms.autosuggestField({
+        label: 'CDN location URL',
+        instructions: 'The public URL used to fetch the assets (for example: https://cdn.creativeorange.nl/article/)',
+        id: 'cdnUrl',
+        name: 'cdnUrl',
+        value: settings['cdnUrl'],
+        required: true,
+        suggestEnvVars: true,
+        suggestAliases: true}) }}
+</div>
+

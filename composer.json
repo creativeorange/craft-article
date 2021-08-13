@@ -1,0 +1,35 @@
+{
+  "name": "creativeorange/article-craft",
+  "description": "Implementation of the Article WYSIWYG editor for CraftCMS",
+  "type": "craft-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Creativeorange BV",
+      "homepage": "https://www.creativeorange.nl"
+    },
+    {
+      "name": "Jonathan Hafkamp",
+      "email": "jonathan@creativeorange.nl"
+    }
+  ],
+  "support": {
+    "email": "info@creativeorange.nl",
+    "issues": "https://github.com/creativeorange/article-craft/issues?state=open",
+    "source": "https://github.com/creativeorange/article-craft",
+    "docs": "https://github.com/creativeorange/article-craft/blob/main/README.md"
+  },
+  "require": {
+    "craftcms/cms": "^3.6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "creativeorange\\craft\\article\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Article",
+    "handle": "article-craft",
+    "description": "Edit richt text content in Craft CMS using Article by Imperavi."
+  }
+}

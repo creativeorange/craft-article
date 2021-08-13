@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    "craft-image",
+    "craft-image-editor",
+    "craft-link"
+  ]
+}

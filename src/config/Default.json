@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "craft-image",
+    "craft-image-editor",
+    "craft-link",
+    "imageposition",
+    "reorder",
+    "underline",
+    "removeformat",
+    "selector"
+  ]
+}
