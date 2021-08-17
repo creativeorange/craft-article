@@ -6,7 +6,6 @@ ArticleEditor.add('plugin', 'craft-image-editor', {
     assetId: null,
 
     // Start the plugin
-    // @todo Add licensing
     start: function () {
         // Add image in the addbar
         // so you can insert craft cms

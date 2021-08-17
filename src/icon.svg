@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="98px" height="98px" viewBox="0 0 98 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ArtticlePlugin_Icon</title>
+    <g id="ArtticlePlugin_Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#000033" x="0" y="0" width="98" height="98" rx="26"></rect>
+        <rect id="Rectangle" stroke="#FFFFFF" stroke-width="2" x="24" y="24" width="22" height="22" rx="6"></rect>
+        <rect id="Rectangle-Copy-2" stroke="#FFFFFF" stroke-width="2" x="24" y="52" width="22" height="22" rx="6"></rect>
+        <rect id="Rectangle-Copy" stroke="#FFFFFF" stroke-width="2" x="52" y="24" width="22" height="22" rx="6"></rect>
+        <rect id="Rectangle" fill="#FFFFFF" x="28" y="29" width="14" height="5" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-5" fill="#FFFFFF" x="56" y="29" width="14" height="5" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-6" fill="#FFFFFF" x="28" y="57" width="14" height="5" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-7" fill="#FFFFFF" x="28" y="36" width="14" height="5" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-8" fill="#FFFFFF" x="56" y="36" width="14" height="5" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-9" fill="#FFFFFF" x="28" y="64" width="14" height="5" rx="1.5"></rect>
+        <rect id="Rectangle-Copy-2" stroke="#FFFFFF" stroke-width="2" x="24" y="52" width="22" height="22" rx="6"></rect>
+        <rect id="Rectangle-Copy" stroke="#FFFFFF" stroke-width="2" x="52" y="24" width="22" height="22" rx="6"></rect>
+        <rect id="Rectangle-Copy-3" stroke="#FFFFFF" stroke-width="2" x="52" y="52" width="22" height="22" rx="6"></rect>
+        <path d="M64,57 C64.5522847,57 65,57.4477153 65,58 L65,60.999 L68,61 C68.5522847,61 69,61.4477153 69,62 L69,64 C69,64.5522847 68.5522847,65 68,65 L65,65 L65,68 C65,68.5522847 64.5522847,69 64,69 L62,69 C61.4477153,69 61,68.5522847 61,68 L61,65 L58,65 C57.4477153,65 57,64.5522847 57,64 L57,62 C57,61.4477153 57.4477153,61 58,61 L61,61 L61,58 C61,57.4477153 61.4477153,57 62,57 L64,57 Z" id="Combined-Shape" fill="#F0532D"></path>
+    </g>
+</svg>

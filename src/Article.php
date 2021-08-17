@@ -182,9 +182,6 @@ class Article extends Field
     }
 
     /**
-     *
-     * @todo Check licensing
-     *
      * @inheritdoc
      */
     public function getSettingsHtml()
@@ -256,8 +253,6 @@ class Article extends Field
     }
 
     /**
-     * @todo Check licensing
-     *
      * @inheritdoc
      */
     public function normalizeValue($value, ElementInterface $element = null)
@@ -276,8 +271,6 @@ class Article extends Field
     }
 
     /**
-     * @todo Check licensing
-     *
      * @inheritdoc
      */
     public function serializeValue($value, ElementInterface $element = null)
@@ -395,7 +388,6 @@ class Article extends Field
      * @param string $value
      * @param ElementInterface|null $element
      * @return string
-     * @todo Licensing
      *
      */
     private function _parseRefs(string $value, ElementInterface $element = null): string
@@ -493,7 +485,6 @@ class Article extends Field
      * @param ElementInterface|null $element
      * @return string
      * @throws InvalidConfigException
-     * @todo Check licensing
      *
      */
     protected function inputHtml($value, ElementInterface $element = null): string
@@ -604,7 +595,6 @@ class Article extends Field
      * Returns the available volumes.
      *
      * @return string[]
-     * @todo Licensing
      *
      */
     private function _getVolumeKeys(): array
@@ -656,7 +646,6 @@ class Article extends Field
      * Get available transforms.
      *
      * @return array
-     * @todo Licensing
      *
      */
     private function _getTransforms(): array
@@ -692,7 +681,6 @@ class Article extends Field
      *
      * @param Element|null $element The element the field is associated with, if there is one
      * @return array
-     * @todo Licensing
      *
      */
     private function _getLinkOptions(Element $element = null): array
@@ -747,7 +735,6 @@ class Article extends Field
      *
      * @param Element|null $element The element the field is associated with, if there is one
      * @return array
-     * @todo Licensing
      *
      */
     private function _getSectionSources(Element $element = null): array
@@ -790,7 +777,6 @@ class Article extends Field
      *
      * @param Element|null $element The element the field is associated with, if there is one
      * @return array
-     * @todo Licensing
      *
      */
     private function _getCategorySources(Element $element = null): array

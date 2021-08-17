@@ -21,7 +21,6 @@ ArticleEditor.add('plugin', 'craft-link', {
         }
     },
     // Initialize the plugin
-    // @todo Add licensing
     init: function () {
         var craftSettings = this.opts.craft;
 
