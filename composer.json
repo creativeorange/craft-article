@@ -1,5 +1,5 @@
 {
-  "name": "creativeorange/article-craft",
+  "name": "creativeorange/craft-article",
   "description": "Implementation of the Article WYSIWYG editor for CraftCMS",
   "type": "craft-plugin",
   "license": "MIT",
@@ -15,12 +15,13 @@
   ],
   "support": {
     "email": "info@creativeorange.nl",
-    "issues": "https://github.com/creativeorange/article-craft/issues?state=open",
-    "source": "https://github.com/creativeorange/article-craft",
-    "docs": "https://github.com/creativeorange/article-craft/blob/main/README.md"
+    "issues": "https://github.com/creativeorange/craft-article/issues?state=open",
+    "source": "https://github.com/creativeorange/craft-article",
+    "docs": "https://github.com/creativeorange/craft-article/blob/main/README.md"
   },
   "require": {
-    "craftcms/cms": "^3.6.0"
+    "craftcms/cms": "^3.6.0",
+    "guzzlehttp/guzzle": "^7.0"
   },
   "autoload": {
     "psr-4": {
@@ -29,7 +30,7 @@
   },
   "extra": {
     "name": "Article",
-    "handle": "article-craft",
+    "handle": "craft-article",
     "description": "Edit richt text content in Craft CMS using Article by Imperavi."
   }
 }

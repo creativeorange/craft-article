@@ -24,14 +24,17 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
+
+        \Yii::setAlias('@craft_article', __DIR__ . '/assets/editor/');
+
         Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function (RegisterComponentTypesEvent $e) {
             $e->types[] = Article::class;
         });
 
         \Craft::$app->i18n->translations['article'] = [
-            'class' => PhpMessageSource::class,
+            'class'          => PhpMessageSource::class,
             'sourceLanguage' => 'nl',
-            'basePath' => __DIR__ . '/translations',
+            'basePath'       => __DIR__ . '/translations',
             'allowOverrides' => true,
         ];
     }
@@ -47,7 +50,7 @@ class Plugin extends \craft\base\Plugin
     protected function settingsHtml()
     {
         return \Craft::$app->getView()->renderTemplate(
-            'article-craft/settings',
+            'craft-article/settings',
             ['settings' => $this->getSettings()]
         );
     }

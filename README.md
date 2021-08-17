@@ -34,10 +34,10 @@ After adding it to the composer.json, go to your terminal and execute:
 cd /path/to/my-project.test
 
 # tell Composer to load the plugin
-composer require creativeorange/article-craft
+composer require creativeorange/craft-article
 
 # tell Craft to install the plugin
-./craft install/plugin article-craft
+./craft install/plugin craft-article
 ```
 
 ## Configuration

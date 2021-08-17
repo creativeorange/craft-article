@@ -209,7 +209,7 @@ class Article extends Field
         }
 
 
-        return Craft::$app->getView()->renderTemplate('article-craft/_field_settings', [
+        return Craft::$app->getView()->renderTemplate('craft-article/_field_settings', [
             'field'                   => $this,
             'volumeOptions'           => $volumeOptions,
             'transformOptions'        => $transformOptions,
@@ -217,7 +217,7 @@ class Article extends Field
             'articleConfigOptions'    => $this->_getCustomConfigOptions('article'),
             'defaultTransformOptions' => array_merge([
                                                          [
-                                                             'label' => Craft::t('article-craft', 'No transform'),
+                                                             'label' => Craft::t('craft-article', 'No transform'),
                                                              'value' => null,
                                                          ],
                                                      ], $transformOptions),
@@ -535,9 +535,24 @@ class Article extends Field
             }
         }
 
+        $urlFrame = \Craft::$app->assetManager->getPublishedUrl(
+            '@craft_article/css/arx-frame.min.css',
+            true
+        );
+
+        $urlContent = \Craft::$app->assetManager->getPublishedUrl(
+            '@craft_article/css/arx-content.min.css',
+            true
+        );
+
 
         $defaultSettings = [
-            'css'        => $cdnPath . 'css/',
+            'css'        => $urlFrame,
+            'custom'     => [
+                'css' => [
+                    $urlContent
+                ],
+            ],
             'addbarHide' => ['image'],
             'source'     => $source,
             'craft'      => [

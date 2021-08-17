@@ -7,6 +7,7 @@ namespace creativeorange\craft\article\models;
 
 use Craft;
 use craft\base\Model;
+use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 
 /**
@@ -27,6 +28,7 @@ class Settings extends Model
 {
     public $cdnUrl = '';
     public $useCDN = false;
+    public $cdnToken = null;
 
     /**
      * API Keys can be set in environment variable. Therefore
@@ -48,16 +50,48 @@ class Settings extends Model
 
             return $result . $file;
         } else {
-            $result = 'https://cdn.creativeorange.nl/article/';
+            $result = 'https://cdn.creativeorange.eu/article/2.3.x/';
 
             if ($withKey) {
-                // @todo Replace with our own License Key for the CDN
-                $licenseKey = Craft::$app->getPlugins()->getPluginLicenseKey('article-craft') ?? 'unlicensed';
+                $token = $this->getCDNToken();
             }
 
-            return $result . $file . ($withKey ? '?key=' . urlencode($licenseKey) : '');
+            return $result . $file . ($withKey ? '?key=' . urlencode($token) : '');
         }
 
     }
+
+    /**
+     * @return bool
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \yii\base\ExitException
+     */
+    public function getCDNToken()
+    {
+        return $this->cdnToken ?? $this->generateCDNToken();
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \yii\base\ExitException
+     */
+    public function generateCDNToken()
+    {
+        try {
+            $craftArticle = Craft::$app->getPlugins()->getPlugin('craft-article');
+            $client = new Client();
+            $response = $client->post('https://license.creativeorange.eu/api/new/article', ['form_params' => ['name' => 'craft-article.' . Craft::$app->getPlugins()->getPlugin('craft-article')->getVersion()]]);
+            $cdnToken = $response->getBody();
+            if (!empty($cdnToken)) {
+                $this->cdnToken = (string)$cdnToken;
+
+                Craft::$app->getPlugins()->savePluginSettings($craftArticle, ['cdnToken' => (string)$cdnToken]);
+            }
+            return $this->cdnToken;
+        } catch (\Exception $e) {
+            return 'unknown';
+        }
+    }
+
 
 }

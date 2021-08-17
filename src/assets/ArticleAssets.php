@@ -3,18 +3,22 @@
 namespace creativeorange\craft\article\assets;
 
 use craft\web\AssetBundle;
-use creativeorange\craft\article\Plugin;
 
 class ArticleAssets extends AssetBundle
 {
+    /**
+     * @inheritdoc
+     */
+    public $sourcePath = '@craft_article/assets/editor';
+
     /** @inheritdoc */
     public function init()
     {
         parent::init();
 
         $this->css = [
-            Plugin::getInstance()->getSettings()->getAssetUrl('css/arx-content.min.css'),
-            Plugin::getInstance()->getSettings()->getAssetUrl('css/arx-frame.min.css'),
+            'css/arx-content.min.css',
+            'css/arx-frame.min.css',
         ];
     }
 }
