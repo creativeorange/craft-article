@@ -1,4 +1,4 @@
-<h1 align="center">Craft Article</h1>
+<h1 align="center">![Craft Article](https://raw.githubusercontent.com/creativeorange/craft-article/55f3e1803f86f999cae998d13e01486735960741/src/icon.svg?token=AD2KUHPPLRGVX457EYKZ6ZDBDOXTK) Craft Article</h1>
 
 This plugin adds a “Article” field type to Craft CMS, which provides a rich text editor powered
 by [Article](https://imperavi.com/article/) by Imperavi.
