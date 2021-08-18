@@ -17,7 +17,7 @@
     "email": "info@creativeorange.nl",
     "issues": "https://github.com/creativeorange/craft-article/issues?state=open",
     "source": "https://github.com/creativeorange/craft-article",
-    "docs": "https://github.com/creativeorange/craft-article/blob/main/README.md"
+    "docs": "https://docs.creativeorange.nl/craft-article"
   },
   "require": {
     "craftcms/cms": "^3.6.0",
