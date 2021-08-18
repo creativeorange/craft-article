@@ -9,7 +9,7 @@ class ArticleAssets extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@craft_article/assets/editor';
+    public $sourcePath = '@craft_article';
 
     /** @inheritdoc */
     public function init()

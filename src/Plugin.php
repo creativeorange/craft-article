@@ -24,8 +24,7 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-
-        \Yii::setAlias('@craft_article', __DIR__ . '/assets/editor/');
+        \Yii::setAlias('@craft_article', realpath(dirname(__DIR__)) . "/src/assets/editor");
 
         Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function (RegisterComponentTypesEvent $e) {
             $e->types[] = Article::class;
