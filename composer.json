@@ -2,7 +2,6 @@
   "name": "creativeorange/craft-article",
   "description": "A rich content editor with Grid, layout and template capabilities",
   "type": "craft-plugin",
-  "license": "craft",
   "authors": [
     {
       "name": "Creativeorange",
