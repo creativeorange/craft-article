@@ -1,20 +1,17 @@
 {
   "name": "creativeorange/craft-article",
-  "description": "Implementation of the Article WYSIWYG editor for CraftCMS",
+  "description": "A rich content editor with Grid, layout and template capabilities",
   "type": "craft-plugin",
-  "license": "MIT",
+  "license": "craft",
   "authors": [
     {
-      "name": "Creativeorange BV",
-      "homepage": "https://www.creativeorange.nl"
-    },
-    {
-      "name": "Jonathan Hafkamp",
-      "email": "jonathan@creativeorange.nl"
+      "name": "Creativeorange",
+      "homepage": "https://www.creativeorange.nl",
+      "email": "support@creativeorange.nl"
     }
   ],
   "support": {
-    "email": "info@creativeorange.nl",
+    "email": "support@creativeorange.nl",
     "issues": "https://github.com/creativeorange/craft-article/issues?state=open",
     "source": "https://github.com/creativeorange/craft-article",
     "docs": "https://docs.creativeorange.nl/craft-article"
@@ -29,8 +26,8 @@
     }
   },
   "extra": {
-    "name": "Article",
+    "name": "Article Editor",
     "handle": "craft-article",
-    "description": "Edit richt text content in Craft CMS using Article by Imperavi."
+    "description": "A rich content editor with Grid, layout and template capabilities"
   }
 }

@@ -1,20 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="98px" height="98px" viewBox="0 0 98 98" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>ArtticlePlugin_Icon</title>
-    <g id="ArtticlePlugin_Icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#000033" x="0" y="0" width="98" height="98" rx="26"></rect>
-        <rect id="Rectangle" stroke="#FFFFFF" stroke-width="2" x="24" y="24" width="22" height="22" rx="6"></rect>
-        <rect id="Rectangle-Copy-2" stroke="#FFFFFF" stroke-width="2" x="24" y="52" width="22" height="22" rx="6"></rect>
-        <rect id="Rectangle-Copy" stroke="#FFFFFF" stroke-width="2" x="52" y="24" width="22" height="22" rx="6"></rect>
-        <rect id="Rectangle" fill="#FFFFFF" x="28" y="29" width="14" height="5" rx="1.5"></rect>
-        <rect id="Rectangle-Copy-5" fill="#FFFFFF" x="56" y="29" width="14" height="5" rx="1.5"></rect>
-        <rect id="Rectangle-Copy-6" fill="#FFFFFF" x="28" y="57" width="14" height="5" rx="1.5"></rect>
-        <rect id="Rectangle-Copy-7" fill="#FFFFFF" x="28" y="36" width="14" height="5" rx="1.5"></rect>
-        <rect id="Rectangle-Copy-8" fill="#FFFFFF" x="56" y="36" width="14" height="5" rx="1.5"></rect>
-        <rect id="Rectangle-Copy-9" fill="#FFFFFF" x="28" y="64" width="14" height="5" rx="1.5"></rect>
-        <rect id="Rectangle-Copy-2" stroke="#FFFFFF" stroke-width="2" x="24" y="52" width="22" height="22" rx="6"></rect>
-        <rect id="Rectangle-Copy" stroke="#FFFFFF" stroke-width="2" x="52" y="24" width="22" height="22" rx="6"></rect>
-        <rect id="Rectangle-Copy-3" stroke="#FFFFFF" stroke-width="2" x="52" y="52" width="22" height="22" rx="6"></rect>
-        <path d="M64,57 C64.5522847,57 65,57.4477153 65,58 L65,60.999 L68,61 C68.5522847,61 69,61.4477153 69,62 L69,64 C69,64.5522847 68.5522847,65 68,65 L65,65 L65,68 C65,68.5522847 64.5522847,69 64,69 L62,69 C61.4477153,69 61,68.5522847 61,68 L61,65 L58,65 C57.4477153,65 57,64.5522847 57,64 L57,62 C57,61.4477153 57.4477153,61 58,61 L61,61 L61,58 C61,57.4477153 61.4477153,57 62,57 L64,57 Z" id="Combined-Shape" fill="#F0532D"></path>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.4.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 257.3 257.3" style="enable-background:new 0 0 257.3 257.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#E65311;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#F5F5F5;}
+	.st3{fill:none;stroke:#F6F6F6;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:5;}
+</style>
+<path class="st0" d="M227.3,257.3H30c-16.6,0-30-13.4-30-30V30C0,13.4,13.4,0,30,0h197.3c16.6,0,30,13.4,30,30v197.3
+	C257.3,243.9,243.9,257.3,227.3,257.3z"/>
+<path class="st1" d="M88.1,124.5V35.7c0-3.4-3.7-6.1-8.2-6.1h-41c-4.5,0-8.2,2.7-8.2,6.1v134.8c0,3.4,3.7,6.1,8.2,6.1h41
+	c4.5,0,8.2-2.7,8.2-6.1v-36.8V124.5z"/>
+<path class="st1" d="M108.6,176.6h110.6c4.5,0,8.2-3.1,8.2-6.8v-34.2c0-3.8-3.7-6.8-8.2-6.8H108.6c-4.5,0-8.2,3.1-8.2,6.8v34.2
+	C100.4,173.5,104.1,176.6,108.6,176.6z"/>
+<path class="st1" d="M219.2,29.6H108.6c-4.5,0-8.2,2.6-8.2,5.9v79.1c0,3.2,3.7,5.9,8.2,5.9h110.6c4.5,0,8.2-2.6,8.2-5.9V35.4
+	C227.4,32.2,223.7,29.6,219.2,29.6z"/>
+<g>
+	<circle class="st2" cx="128.7" cy="206.4" r="14.1"/>
+	<g>
+		<path class="st0" d="M122.1,204.5h4.6v-4.6h3.9v4.6h4.6v3.9h-4.6v4.6h-3.9v-4.6h-4.6V204.5z"/>
+	</g>
+</g>
+<path class="st3" d="M100.4,228h118.8c4.5,0,8.2-2.8,8.2-6.2V191c0-3.4-3.7-6.2-8.2-6.2H38.9c-4.5,0-8.2,2.8-8.2,6.2v30.9
+	c0,3.4,3.7,6.2,8.2,6.2h49.2H100.4z"/>
 </svg>
