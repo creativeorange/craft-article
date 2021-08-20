@@ -1,4 +1,4 @@
-![Craft Article](https://raw.githubusercontent.com/creativeorange/craft-article/55f3e1803f86f999cae998d13e01486735960741/src/icon.svg?token=AD2KUHPPLRGVX457EYKZ6ZDBDOXTK)
+<img src="https://raw.githubusercontent.com/creativeorange/craft-article/main/src/icon.svg" width="128" height="128" title="Article Editor" alt="Article Editor" />
 
 # Article Editor
 
