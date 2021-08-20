@@ -162,4 +162,21 @@
         }) }}
     </div>
 
+
+    {% if craft.app.db.isMysql %}
+        {{ forms.selectField({
+            label: "Column Type"|t('article'),
+            id: 'column-type',
+            name: 'columnType',
+            instructions: "The type of column this field should get in the database."|t('article'),
+            options: [
+                { value: 'text', label: 'text (~64KB)' },
+                { value: 'mediumtext', label: 'mediumtext (~16MB)' },
+                { value: 'longtext', label: 'longtext (~4GB)' },
+            ],
+            value: field.columnType,
+            warning: (field.id ? "Changing this may result in data loss."|t('article')),
+        }) }}
+    {% endif %}
+
 </div>
