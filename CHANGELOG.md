@@ -1,4 +1,4 @@
-# Changelog
+# Release Notes for Article Editor for Craft CMS
 
 ## v1.0.3 - 2021-08-20
 
