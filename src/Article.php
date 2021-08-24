@@ -108,7 +108,7 @@ class Article extends Field
     /**
      * Article constructor.
      *
-     * @param array $config
+     * @param  array  $config
      */
     public function __construct($config = [])
     {
@@ -213,25 +213,25 @@ class Article extends Field
             'purifierConfigOptions'   => $this->_getCustomConfigOptions('htmlpurifier'),
             'articleConfigOptions'    => $this->_getCustomConfigOptions('article'),
             'defaultTransformOptions' => array_merge([
-                                                         [
-                                                             'label' => Craft::t('craft-article', 'No transform'),
-                                                             'value' => null,
-                                                         ],
-                                                     ], $transformOptions),
+                [
+                    'label' => Craft::t('craft-article', 'No transform'),
+                    'value' => null,
+                ],
+            ], $transformOptions),
         ]);
     }
 
     /**
      * Returns the available Article config options.
      *
-     * @param string $dir The directory name within the config/ folder to look for config files
+     * @param  string  $dir  The directory name within the config/ folder to look for config files
      * @return array
      * @throws Exception
      */
     private function _getCustomConfigOptions(string $dir): array
     {
         $options = ['' => Craft::t('article', 'Default')];
-        $path = Craft::$app->getPath()->getConfigPath() . DIRECTORY_SEPARATOR . $dir;
+        $path = Craft::$app->getPath()->getConfigPath().DIRECTORY_SEPARATOR.$dir;
 
         if (is_dir($path)) {
             $files = FileHelper::findFiles($path, [
@@ -294,8 +294,8 @@ class Article extends Field
                 $value = preg_replace_callback('/<svg\b.*>.*<\/svg>/Uis',
                     function (array $match) use (&$svgTokens, &$svgContent): string {
                         $svgContent[] = Html::sanitizeSvg($match[0]);
-                        return $svgTokens[] = 'svg:' . StringHelper::randomString(10);
-                    },                         $value);
+                        return $svgTokens[] = 'svg:'.StringHelper::randomString(10);
+                    }, $value);
 
                 $value = HtmlPurifier::process($value, $this->_getPurifierConfig());
 
@@ -316,12 +316,12 @@ class Article extends Field
                         $allowed = [];
                         $styles = explode(';', $matches[2]);
                         foreach ($styles as $style) {
-                            list($name, $value) = array_map('trim', array_pad(explode(':', $style, 2), 2, ''));
+                            [$name, $value] = array_map('trim', array_pad(explode(':', $style, 2), 2, ''));
                             if (isset($allowedStyles[$name])) {
                                 $allowed[] = "{$name}: {$value}";
                             }
                         }
-                        return $matches[1] . (!empty($allowed) ? ' style="' . implode('; ', $allowed) . '"' : '');
+                        return $matches[1].(!empty($allowed) ? ' style="'.implode('; ', $allowed).'"' : '');
                     },
                     $value
                 );
@@ -330,7 +330,7 @@ class Article extends Field
             if ($this->removeEmptyTags) {
                 // Remove empty tags
                 $value = preg_replace('/<(h1|h2|h3|h4|h5|h6|p|div|blockquote|pre|strong|em|a|b|i|u|span)\s*><\/\1>/',
-                                      '', $value);
+                    '', $value);
             }
 
             if ($this->removeNbsp) {
@@ -342,13 +342,13 @@ class Article extends Field
 
         // Find any element URLs and swap them with ref tags
         $value = preg_replace_callback(
-            '/(href=|src=)([\'"])([^\'"\?#]*)(\?[^\'"\?#]+)?(#[^\'"\?#]+)?(?:#|%23)([\w\\\\]+)\:(\d+)(?:@(\d+))?(\:(?:transform\:)?' . HandleValidator::$handlePattern . ')?\2/',
+            '/(href=|src=)([\'"])([^\'"\?#]*)(\?[^\'"\?#]+)?(#[^\'"\?#]+)?(?:#|%23)([\w\\\\]+)\:(\d+)(?:@(\d+))?(\:(?:transform\:)?'.HandleValidator::$handlePattern.')?\2/',
             function ($matches) {
-                list(, $attr, $q, $url, $query, $hash, $elementType, $ref, $siteId, $transform) = array_pad($matches,
-                                                                                                            10, null);
+                [, $attr, $q, $url, $query, $hash, $elementType, $ref, $siteId, $transform] = array_pad($matches,
+                    10, null);
 
                 // Create the ref tag, and make sure :url is in there
-                $ref = $elementType . ':' . $ref . ($siteId ? "@$siteId" : '') . ($transform ?: ':url');
+                $ref = $elementType.':'.$ref.($siteId ? "@$siteId" : '').($transform ?: ':url');
 
                 if ($query || $hash) {
                     // Make sure that the query/hash isn't actually part of the parsed URL
@@ -369,7 +369,7 @@ class Article extends Field
                     }
                 }
 
-                return $attr . $q . '{' . $ref . '||' . $url . '}' . $query . $hash . $q;
+                return $attr.$q.'{'.$ref.'||'.$url.'}'.$query.$hash.$q;
             },
             $value);
 
@@ -385,8 +385,8 @@ class Article extends Field
      * Parse ref tags in URLs, while preserving the original tag values in the URL fragments
      * (e.g. `href="{entry:id:url}"` => `href="[entry-url]#entry:id:url"`)
      *
-     * @param string $value
-     * @param ElementInterface|null $element
+     * @param  string  $value
+     * @param  ElementInterface|null  $element
      * @return string
      *
      */
@@ -396,10 +396,10 @@ class Article extends Field
             return $value;
         }
 
-        return preg_replace_callback('/(href=|src=)([\'"])(\{([\w\\\\]+\:\d+(?:@\d+)?\:(?:transform\:)?' . HandleValidator::$handlePattern . ')(?:\|\|[^\}]+)?\})(?:\?([^\'"#]*))?(#[^\'"#]+)?\2/',
+        return preg_replace_callback('/(href=|src=)([\'"])(\{([\w\\\\]+\:\d+(?:@\d+)?\:(?:transform\:)?'.HandleValidator::$handlePattern.')(?:\|\|[^\}]+)?\})(?:\?([^\'"#]*))?(#[^\'"#]+)?\2/',
             function ($matches) use ($element) {
                 /** @var Element|null $element */
-                list ($fullMatch, $attr, $q, $refTag, $ref, $query, $fragment) = array_pad($matches, 7, null);
+                [$fullMatch, $attr, $q, $refTag, $ref, $query, $fragment] = array_pad($matches, 7, null);
                 $parsed = Craft::$app->getElements()->parseRefs($refTag, $element->siteId ?? null);
                 // If the ref tag couldn't be parsed, leave it alone
                 if ($parsed === $refTag) {
@@ -412,8 +412,8 @@ class Article extends Field
                         $parsed = UrlHelper::urlWithParams($parsed, $query);
                     }
                 }
-                return $attr . $q . $parsed . ($fragment ?? '') . '#' . $ref . $q;
-            },                       $value);
+                return $attr.$q.$parsed.($fragment ?? '').'#'.$ref.$q;
+            }, $value);
     }
 
     /**
@@ -445,8 +445,8 @@ class Article extends Field
     /**
      * Returns a JSON-decoded config, if it exists.
      *
-     * @param string $dir The directory name within the config/ folder to look for the config file
-     * @param string|null $file The filename to load.
+     * @param  string  $dir  The directory name within the config/ folder to look for the config file
+     * @param  string|null  $file  The filename to load.
      * @return array|false The config, or false if the file doesn't exist
      * @throws Exception
      */
@@ -456,7 +456,7 @@ class Article extends Field
             $file = 'Default.json';
         }
 
-        $path = Craft::$app->getPath()->getConfigPath() . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $file;
+        $path = Craft::$app->getPath()->getConfigPath().DIRECTORY_SEPARATOR.$dir.DIRECTORY_SEPARATOR.$file;
 
         if (!is_file($path)) {
             if ($file !== 'Default.json') {
@@ -481,8 +481,8 @@ class Article extends Field
 
     /**
      *
-     * @param mixed $value
-     * @param ElementInterface|null $element
+     * @param  mixed  $value
+     * @param  ElementInterface|null  $element
      * @return string
      * @throws InvalidConfigException
      *
@@ -492,9 +492,6 @@ class Article extends Field
         // register the asset/article bundles
         $view = Craft::$app->getView();
         $view->registerAssetBundle(EditorAssets::class);
-
-        $cdnPath = Plugin::getInstance()->getSettings()->getAssetUrl('', false);
-
 
         $source = true;
         if (!$this->showHtmlButtonForNonAdmins && !Craft::$app->getUser()->getIsAdmin()) {
@@ -518,10 +515,12 @@ class Article extends Field
                 if (in_array($plugin, $defaultPlugins)) {
                     continue;
                 }
-                if (file_exists(CRAFT_BASE_PATH . '/web/article/' . $plugin . '.js')) {
-                    $view->registerJsFile(Craft::$app->getSites()->getCurrentSite()->getBaseUrl() . 'article/' . $plugin . '.js', ['depends' => EditorAssets::class]);
+                if (file_exists(CRAFT_BASE_PATH.'/web/article/'.$plugin.'.js')) {
+                    $view->registerJsFile(Craft::$app->getSites()->getCurrentSite()->getBaseUrl().'article/'.$plugin.'.js',
+                        ['depends' => EditorAssets::class]);
                 } else {
-                    $view->registerJsFile(Plugin::getInstance()->getSettings()->getAssetUrl('plugins/' . $plugin . '/' . $plugin . '.min.js'), ['depends' => EditorAssets::class]);
+                    $view->registerJsFile(Plugin::getInstance()->getSettings()->getAssetUrl('plugins/'.$plugin.'/'.$plugin.'.min.js'),
+                        ['depends' => EditorAssets::class]);
                 }
             }
         }
@@ -541,7 +540,7 @@ class Article extends Field
             'css'        => $urlFrame,
             'custom'     => [
                 'css' => [
-                    $urlContent
+                    $urlContent,
                 ],
             ],
             'addbarHide' => ['image'],
@@ -569,7 +568,7 @@ class Article extends Field
         }
 
 
-        $view->registerJs("ArticleEditor('#" . $view->namespaceInputId($id) . "', " . Json::encode($settings) . ");");
+        $view->registerJs("ArticleEditor('#".$view->namespaceInputId($id)."', ".Json::encode($settings).");");
 
         return Html::textarea($this->handle, $value, ['id' => $id]);
     }
@@ -611,7 +610,7 @@ class Article extends Field
 
         foreach ($allVolumes as $volume) {
             $allowedBySettings = $this->availableVolumes === '*' || (is_array($this->availableVolumes) && in_array($volume->uid,
-                                                                                                                   $this->availableVolumes));
+                        $this->availableVolumes));
             if ($allowedBySettings && ($this->showUnpermittedVolumes || $userService->checkPermission("viewVolume:{$volume->uid}"))) {
                 $allowedVolumes[] = $volume->uid;
             }
@@ -636,7 +635,7 @@ class Article extends Field
         });
 
         foreach ($folders as $folder) {
-            $volumeKeys[] = 'folder:' . $folder->uid;
+            $volumeKeys[] = 'folder:'.$folder->uid;
         }
 
         return $volumeKeys;
@@ -679,7 +678,7 @@ class Article extends Field
      * select
      * - `storageKey` (optional) – the localStorage key that should be used to store the element selector modal state
      *
-     * @param Element|null $element The element the field is associated with, if there is one
+     * @param  Element|null  $element  The element the field is associated with, if there is one
      * @return array
      *
      */
@@ -733,7 +732,7 @@ class Article extends Field
     /**
      * Returns the available section sources.
      *
-     * @param Element|null $element The element the field is associated with, if there is one
+     * @param  Element|null  $element  The element the field is associated with, if there is one
      * @return array
      *
      */
@@ -754,7 +753,7 @@ class Article extends Field
                     $sectionSiteSettings = $section->getSiteSettings();
                     foreach ($sites as $site) {
                         if (isset($sectionSiteSettings[$site->id]) && $sectionSiteSettings[$site->id]->hasUrls) {
-                            $sources[] = 'section:' . $section->uid;
+                            $sources[] = 'section:'.$section->uid;
                         }
                     }
                 }
@@ -775,7 +774,7 @@ class Article extends Field
     /**
      * Returns the available category sources.
      *
-     * @param Element|null $element The element the field is associated with, if there is one
+     * @param  Element|null  $element  The element the field is associated with, if there is one
      * @return array
      *
      */
@@ -790,7 +789,7 @@ class Article extends Field
                 // Does the category group have URLs in the same site as the element we're editing?
                 $categoryGroupSiteSettings = $categoryGroup->getSiteSettings();
                 if (isset($categoryGroupSiteSettings[$element->siteId]) && $categoryGroupSiteSettings[$element->siteId]->hasUrls) {
-                    $sources[] = 'group:' . $categoryGroup->uid;
+                    $sources[] = 'group:'.$categoryGroup->uid;
                 }
             }
         }
