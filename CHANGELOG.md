@@ -1,5 +1,10 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v1.0.4 - 2021-08-31
+
+### Added
+- Fixed incompatibility with Guzzle 6.x
+
 ## v1.0.3 - 2021-08-20
 
 ### Added
