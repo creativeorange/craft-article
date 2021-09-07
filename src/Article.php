@@ -23,6 +23,7 @@ use creativeorange\craft\article\assets\EditorAssets;
 use HTMLPurifier_Config;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
+use yii\db\Schema;
 
 class Article extends Field
 {
@@ -42,7 +43,7 @@ class Article extends Field
     public $availableVolumes = '*';
 
 
-    public $columnType = 'mediumtext';
+    public $columnType = Schema::TYPE_TEXT;
 
     /**
      * @var string Config selection mode ('choose' or 'manual')
@@ -178,7 +179,7 @@ class Article extends Field
      */
     public function getContentColumnType(): string
     {
-        return 'mediumtext';
+        return $this->columnType;
     }
 
     /**
