@@ -27,15 +27,17 @@ use Illuminate\Support\Str;
 class Settings extends Model
 {
     public $cdnUrl = '';
+
     public $useCDN = false;
+
     public $cdnToken = null;
 
     /**
      * API Keys can be set in environment variable. Therefore
      * we need to parse the keys on retrieval.
      *
-     * @param string $file
-     * @param bool $withKey
+     * @param  string  $file
+     * @param  bool  $withKey
      * @return bool|string|null
      * @throws \craft\errors\InvalidLicenseKeyException
      */
@@ -48,7 +50,7 @@ class Settings extends Model
                 $result .= '/';
             }
 
-            return $result . $file;
+            return $result.$file;
         } else {
             $result = 'https://cdn.creativeorange.eu/article/2.3.x/';
 
@@ -56,9 +58,8 @@ class Settings extends Model
                 $token = $this->getCDNToken();
             }
 
-            return $result . $file . ($withKey ? '?key=' . urlencode($token) : '');
+            return $result.$file.($withKey ? '?key='.urlencode($token) : '');
         }
-
     }
 
     /**
@@ -80,12 +81,16 @@ class Settings extends Model
         try {
             $craftArticle = Craft::$app->getPlugins()->getPlugin('craft-article');
             $client = new Client();
-            $response = $client->post('https://license.creativeorange.eu/api/new/article', ['form_params' => ['name' => 'craft-article.' . Craft::$app->getPlugins()->getPlugin('craft-article')->getVersion()]]);
+            $response = $client->post('https://license.creativeorange.eu/api/new/article', [
+                'form_params'      => ['name' => 'craft-article.'.Craft::$app->getPlugins()->getPlugin('craft-article')->getVersion()],
+                'force_ip_resolve' => 'v4',
+            ]);
+
             $cdnToken = $response->getBody();
             if (!empty($cdnToken)) {
-                $this->cdnToken = (string)$cdnToken;
+                $this->cdnToken = (string) $cdnToken;
 
-                Craft::$app->getPlugins()->savePluginSettings($craftArticle, ['cdnToken' => (string)$cdnToken]);
+                Craft::$app->getPlugins()->savePluginSettings($craftArticle, ['cdnToken' => (string) $cdnToken]);
             }
             return $this->cdnToken;
         } catch (\Exception $e) {

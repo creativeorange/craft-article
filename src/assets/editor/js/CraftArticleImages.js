@@ -61,9 +61,7 @@ ArticleEditor.add('plugin', 'craft-image', {
                 sources: this.volumes,
                 criteria: criteria,
                 onSelect: function (assets, transform) {
-
                     const data = {};
-                    const isMulti = assets.length > 1;
 
                     // Process the url into an asset url
                     const processAssetUrls = function (assets, callback) {

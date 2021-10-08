@@ -1,5 +1,10 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v1.0.5 - 2021-10-08
+
+### Fixed
+- Fixing an issue when requesting the licenseKey for the CDN on IPv6 
+
 ## v1.0.4 - 2021-08-31
 
 ### Added
