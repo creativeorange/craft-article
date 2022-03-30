@@ -1,7 +1,5 @@
 window.articleEditors = [];
 
-alert('true');
-
 jQuery(function ($) {
     Garnish.on(Craft.Preview, 'open', articleEditorReload);
     Garnish.on(Craft.LivePreview, 'enter', articleEditorReload);
