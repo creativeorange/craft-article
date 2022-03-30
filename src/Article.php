@@ -569,7 +569,7 @@ class Article extends Field
         }
 
 
-        $view->registerJs("ArticleEditor('#".$view->namespaceInputId($id)."', ".Json::encode($settings).");");
+        $view->registerJs("window.articleEditors.push(ArticleEditor('#".$view->namespaceInputId($id)."', ".Json::encode($settings)."));");
 
         return Html::textarea($this->handle, $value, ['id' => $id]);
     }
