@@ -52,7 +52,7 @@ class Settings extends Model
 
             return $result.$file;
         } else {
-            $result = 'https://cdn.creativeorange.eu/article/2.3.x/';
+            $result = 'https://cdn.creativeorange.eu/article/2.4.x/';
 
             if ($withKey) {
                 $token = $this->getCDNToken();

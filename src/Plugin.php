@@ -10,11 +10,6 @@ use yii\base\Event;
 
 class Plugin extends \craft\base\Plugin
 {
-    /**
-     * @inheritdoc
-     */
-    public $schemaVersion = '0.0.1';
-
     public $hasCpSettings = true;
 
     /**
@@ -24,7 +19,7 @@ class Plugin extends \craft\base\Plugin
     {
         parent::init();
 
-        \Yii::setAlias('@craft_article', realpath(dirname(__DIR__)) . "/src/assets/editor");
+        \Yii::setAlias('@craft_article', realpath(dirname(__DIR__))."/src/assets/editor");
 
         Event::on(Fields::class, Fields::EVENT_REGISTER_FIELD_TYPES, function (RegisterComponentTypesEvent $e) {
             $e->types[] = Article::class;
@@ -33,7 +28,7 @@ class Plugin extends \craft\base\Plugin
         \Craft::$app->i18n->translations['article'] = [
             'class'          => PhpMessageSource::class,
             'sourceLanguage' => 'nl',
-            'basePath'       => __DIR__ . '/translations',
+            'basePath'       => __DIR__.'/translations',
             'allowOverrides' => true,
         ];
     }

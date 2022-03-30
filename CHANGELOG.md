@@ -1,5 +1,14 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v1.1.0 - 2022-03-30
+
+### Fixed
+- Fixing issue #12: Preview Crashes
+
+### Added
+- Article Editor now uses version 2.4.1
+- SOON: Support for CraftCMS 4
+
 ## v1.0.5 - 2021-10-08
 
 ### Fixed
