@@ -10,7 +10,7 @@ class EditorAssets extends AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = __DIR__ . '/editor';
+    public $sourcePath = __DIR__ . '/../../dist/';
 
     /**
      * @var array $plugins
@@ -25,9 +25,7 @@ class EditorAssets extends AssetBundle
 
         $this->js = [
             Plugin::getInstance()->getSettings()->getAssetUrl('article-editor.js'),
-            'js/CraftArticleImages.min.js',
-            'js/CraftArticleImageEditor.min.js',
-            'js/CraftArticleLink.min.js',
+            'js/CraftArticle.js',
         ];
 
         $this->css = [
