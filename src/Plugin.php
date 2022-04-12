@@ -2,6 +2,7 @@
 
 namespace creativeorange\craft\article;
 
+use craft\base\Model;
 use craft\events\RegisterComponentTypesEvent;
 use craft\i18n\PhpMessageSource;
 use craft\services\Fields;
@@ -10,7 +11,7 @@ use yii\base\Event;
 
 class Plugin extends \craft\base\Plugin
 {
-    public $hasCpSettings = true;
+    public bool $hasCpSettings = true;
 
     /**
      *
@@ -36,12 +37,12 @@ class Plugin extends \craft\base\Plugin
     /**
      * @return Settings
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?Model
     {
         return new Settings();
     }
 
-    protected function settingsHtml()
+    protected function settingsHtml(): ?string
     {
         return \Craft::$app->getView()->renderTemplate(
             'craft-article/settings',
