@@ -492,7 +492,6 @@ class Article extends Field
     {
         // register the asset/article bundles
         $view = Craft::$app->getView();
-        $view->registerAssetBundle(EditorAssets::class);
 
         $source = true;
         if (!$this->showHtmlButtonForNonAdmins && !Craft::$app->getUser()->getIsAdmin()) {
@@ -567,7 +566,6 @@ class Article extends Field
             // Parse reference tags
             $value = $this->_parseRefs($value, $element);
         }
-
 
         $view->registerJs("window.articleEditors.push(ArticleEditor('#".$view->namespaceInputId($id)."', ".Json::encode($settings)."));");
 
