@@ -1,4 +1,6 @@
 # Release Notes for Article Editor for Craft CMS
+## v2.0.0 - 2022-05-04
+- Compatible with CraftCMS 4
 
 ## v2.0.0-beta.1 - 2022-04-12
 - Compatible with CraftCMS 4
