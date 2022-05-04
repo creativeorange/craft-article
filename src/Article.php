@@ -185,12 +185,12 @@ class Article extends Field
     /**
      * @inheritdoc
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         $volumeOptions = [];
         /** @var $volume Volume */
-        foreach (Craft::$app->getVolumes()->getPublicVolumes() as $volume) {
-            if ($volume->hasUrls) {
+        foreach (Craft::$app->getVolumes()->getAllVolumes() as $volume) {
+            if ($volume->getFs()->hasUrls) {
                 $volumeOptions[] = [
                     'label' => Html::encode($volume->name),
                     'value' => $volume->uid,
@@ -199,7 +199,7 @@ class Article extends Field
         }
 
         $transformOptions = [];
-        foreach (Craft::$app->getAssetTransforms()->getAllTransforms() as $transform) {
+        foreach (Craft::$app->getImageTransforms()->getAllTransforms() as $transform) {
             $transformOptions[] = [
                 'label' => Html::encode($transform->name),
                 'value' => $transform->uid,
@@ -256,7 +256,7 @@ class Article extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue($value, ElementInterface $element = null): mixed
     {
         if ($value instanceof ArticleData) {
             return $value;
@@ -274,7 +274,7 @@ class Article extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue($value, ElementInterface $element = null): mixed
     {
         /** @var ArticleData|null $value */
         if (!$value) {
@@ -492,7 +492,6 @@ class Article extends Field
     {
         // register the asset/article bundles
         $view = Craft::$app->getView();
-        $view->registerAssetBundle(EditorAssets::class);
 
         $source = true;
         if (!$this->showHtmlButtonForNonAdmins && !Craft::$app->getUser()->getIsAdmin()) {
@@ -504,7 +503,7 @@ class Article extends Field
 
         $defaultTransform = '';
 
-        if (!empty($this->defaultTransform) && $transform = Craft::$app->getAssetTransforms()->getTransformByUid($this->defaultTransform)) {
+        if (!empty($this->defaultTransform) && $transform = Craft::$app->getImageTransforms()->getTransformByUid($this->defaultTransform)) {
             $defaultTransform = $transform->handle;
         }
 
@@ -568,7 +567,6 @@ class Article extends Field
             $value = $this->_parseRefs($value, $element);
         }
 
-
         $view->registerJs("window.articleEditors.push(ArticleEditor('#".$view->namespaceInputId($id)."', ".Json::encode($settings)."));");
 
         return Html::textarea($this->handle, $value, ['id' => $id]);
@@ -613,33 +611,11 @@ class Article extends Field
             $allowedBySettings = $this->availableVolumes === '*' || (is_array($this->availableVolumes) && in_array($volume->uid,
                         $this->availableVolumes));
             if ($allowedBySettings && ($this->showUnpermittedVolumes || $userService->checkPermission("viewVolume:{$volume->uid}"))) {
-                $allowedVolumes[] = $volume->uid;
+                $allowedVolumes[] = 'volume:'.$volume->uid;
             }
         }
 
-        $criteria['volumeId'] = Db::idsByUids('{{%volumes}}', $allowedVolumes);
-
-        $folders = Craft::$app->getAssets()->findFolders($criteria);
-
-        // Sort volumes in the same order as they are sorted in the CP
-        $sortedVolumeIds = Craft::$app->getVolumes()->getAllVolumeIds();
-        $sortedVolumeIds = array_flip($sortedVolumeIds);
-
-        $volumeKeys = [];
-
-        usort($folders, function ($a, $b) use ($sortedVolumeIds) {
-            // In case Temporary volumes ever make an appearance in RTF modals, sort them to the end of the list.
-            $aOrder = $sortedVolumeIds[$a->volumeId] ?? PHP_INT_MAX;
-            $bOrder = $sortedVolumeIds[$b->volumeId] ?? PHP_INT_MAX;
-
-            return $aOrder - $bOrder;
-        });
-
-        foreach ($folders as $folder) {
-            $volumeKeys[] = 'folder:'.$folder->uid;
-        }
-
-        return $volumeKeys;
+        return $allowedVolumes;
     }
 
     /**
@@ -654,7 +630,7 @@ class Article extends Field
             return [];
         }
 
-        $allTransforms = Craft::$app->getAssetTransforms()->getAllTransforms();
+        $allTransforms = Craft::$app->getImageTransforms()->getAllTransforms();
         $transformList = [];
 
         foreach ($allTransforms as $transform) {
