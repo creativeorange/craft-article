@@ -8,9 +8,12 @@ jQuery(function ($) {
     Garnish.on(Craft.LivePreview, 'exit', articleEditorReload);
 });
 
-var articleEditorReload = function() {
-    articleEditors.forEach(function(i) {
-        i.stop();
-        i.start();
+var articleEditorReload = function () {
+    articleEditors.forEach(function (i) {
+        var _renderedInElement = $('#' + i.$element.nodes[0].id);
+        if (_renderedInElement.length > 0) {
+            i.stop();
+            i.start();
+        }
     });
 }
