@@ -1,5 +1,8 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v1.1.1 - 2022-05-17
+- Fixing issue #15: In matrixfields the preview crashed sometimes
+
 ## v1.1.0 - 2022-03-30
 
 ### Fixed
