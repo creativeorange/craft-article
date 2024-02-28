@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix
+    .disableNotifications()
     .js([
         'src/assets/editor/js/CraftArticleImageEditor.js',
         'src/assets/editor/js/CraftArticleImages.js',
