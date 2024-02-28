@@ -1,5 +1,15 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v3.0.0 - 2024-02-28
+
+> [!IMPORTANT]  
+> Starting from this version, the plugin dependencies are only loaded in the CP. Please check your frontend!
+
+### Fixed
+- Issue where ArticleEditor volumes were not getting populated except for admin users
+- Removes unnecessary jQuery dependency in favor of the default CpAsset
+- Issue where the assets were also loaded in the frontend 
+
 ## v2.0.1 - 2022-05-17
 - Fixing issue #15: In matrixfields the preview crashed sometimes
 
