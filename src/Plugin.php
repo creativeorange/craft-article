@@ -29,18 +29,6 @@ class Plugin extends \craft\base\Plugin
             $e->types[] = Article::class;
         });
 
-        Event::on(
-            View::class,
-            View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
-            function (TemplateEvent $event) {
-                // Get view
-                $view = \Craft::$app->getView();
-
-                // Load CSS file
-                $view->registerAssetBundle(EditorAssets::class);
-            }
-        );
-
         \Craft::$app->i18n->translations['article'] = [
             'class'          => PhpMessageSource::class,
             'sourceLanguage' => 'nl',

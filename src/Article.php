@@ -610,7 +610,7 @@ class Article extends Field
         foreach ($allVolumes as $volume) {
             $allowedBySettings = $this->availableVolumes === '*' || (is_array($this->availableVolumes) && in_array($volume->uid,
                         $this->availableVolumes));
-            if ($allowedBySettings && ($this->showUnpermittedVolumes || $userService->checkPermission("viewVolume:{$volume->uid}"))) {
+            if ($allowedBySettings && ($this->showUnpermittedVolumes || $userService->checkPermission("viewAssets:$volume->uid"))) {
                 $allowedVolumes[] = 'volume:'.$volume->uid;
             }
         }
