@@ -1,5 +1,10 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v3.1.0 - 2024-03-11
+
+### Fixed
+- Issue where plugins weren't loaded
+
 ## v3.0.0 - 2024-02-28
 
 > [!IMPORTANT]  
