@@ -19,6 +19,7 @@ use craft\helpers\StringHelper;
 use craft\helpers\UrlHelper;
 use craft\models\Section;
 use craft\validators\HandleValidator;
+use craft\web\View;
 use creativeorange\craft\article\assets\EditorAssets;
 use HTMLPurifier_Config;
 use yii\base\Exception;
@@ -510,6 +511,7 @@ class Article extends Field
         $config = $this->getArticleConfig();
         $defaultPlugins = ['craft-image', 'craft-image-editor', 'craft-link'];
 
+        $view->registerAssetBundle(EditorAssets::class, View::POS_BEGIN);
         if (isset($config['plugins']) && count($config['plugins']) > 0) {
             foreach ($config['plugins'] as $plugin) {
                 if (in_array($plugin, $defaultPlugins)) {
@@ -517,10 +519,10 @@ class Article extends Field
                 }
                 if (file_exists(CRAFT_BASE_PATH.'/web/article/'.$plugin.'.js')) {
                     $view->registerJsFile(Craft::$app->getSites()->getCurrentSite()->getBaseUrl().'article/'.$plugin.'.js',
-                        ['depends' => EditorAssets::class]);
+                        ['position' => View::POS_END]);
                 } else {
                     $view->registerJsFile(Plugin::getInstance()->getSettings()->getAssetUrl('plugins/'.$plugin.'/'.$plugin.'.min.js'),
-                        ['depends' => EditorAssets::class]);
+                        ['position' => View::POS_END]);
                 }
             }
         }
