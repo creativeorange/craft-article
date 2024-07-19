@@ -1,5 +1,10 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v3.1.1 - 2024-07-19
+
+### Fixed
+- Issue where the cp assets are causing a conflict with tabs in the admin
+
 ## v3.1.0 - 2024-03-11
 
 ### Fixed
