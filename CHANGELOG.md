@@ -1,5 +1,8 @@
 # Release Notes for Article Editor for Craft CMS
 
+## v5.0.0 - 2024-11-13
+- Added support for craft 5
+
 ## v3.1.1 - 2024-07-19
 
 ### Fixed
