@@ -257,7 +257,7 @@ class Article extends Field
     /**
      * @inheritdoc
      */
-    public function normalizeValue($value, ElementInterface $element = null): mixed
+    public function normalizeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
     {
         if ($value instanceof ArticleData) {
             return $value;
@@ -275,7 +275,7 @@ class Article extends Field
     /**
      * @inheritdoc
      */
-    public function serializeValue($value, ElementInterface $element = null): mixed
+    public function serializeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
     {
         /** @var ArticleData|null $value */
         if (!$value) {
@@ -489,7 +489,7 @@ class Article extends Field
      * @throws InvalidConfigException
      *
      */
-    protected function inputHtml($value, ElementInterface $element = null): string
+    protected function inputHtml($value, ElementInterface $element = null, bool $inline = false): string
     {
         // register the asset/article bundles
         $view = Craft::$app->getView();
@@ -718,7 +718,7 @@ class Article extends Field
     private function _getSectionSources(Element $element = null): array
     {
         $sources = [];
-        $sections = Craft::$app->getSections()->getAllSections();
+        $sections = Craft::$app->getEntries()->getAllSections();
         $showSingles = false;
 
         // Get all sites
