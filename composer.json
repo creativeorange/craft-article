@@ -16,7 +16,7 @@
     "docs": "https://docs.creativeorange.nl/craft-article"
   },
   "require": {
-    "craftcms/cms": "^4.0.0",
+    "craftcms/cms": "^5.0.0",
     "guzzlehttp/guzzle": "^6.0 || ^7.0"
   },
   "autoload": {
@@ -28,5 +28,16 @@
     "name": "Article Editor",
     "handle": "craft-article",
     "description": "A rich content editor with Grid, layout and template capabilities"
+  },
+  "config": {
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "craftcms/rector": "dev-main"
   }
 }
